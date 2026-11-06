@@ -104,7 +104,7 @@
         header {
             text-align: center;
             max-width: 800px;
-            margin: 4rem 1.5rem 3rem;
+            margin: 4rem 1.5rem 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -140,18 +140,46 @@
             line-height: 1.6;
         }
 
+        /* Video Intro Note */
+        .video-intro-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(8px);
+        }
+
+        .video-intro-note p {
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .video-intro-note span {
+            color: var(--accent-color);
+        }
+
         /* Container Vidéo */
         .video-wrapper {
             position: relative;
             width: calc(100% - 3rem);
             max-width: 960px;
             margin-bottom: 5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            scroll-margin-top: 100px;
         }
 
         .video-wrapper::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 2rem;
             left: 5%;
             right: 5%;
             bottom: 0;
@@ -177,7 +205,6 @@
             height: auto;
             display: block;
             border-radius: 16px;
-            cursor: pointer;
         }
 
         /* Sections */
@@ -186,6 +213,7 @@
             max-width: 1000px;
             padding: 4rem 1.5rem;
             border-top: 1px solid var(--border-color);
+            scroll-margin-top: 80px;
         }
 
         .section-title {
@@ -198,9 +226,10 @@
         .section-desc {
             text-align: center;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 3rem;
             font-size: 1.1rem;
+            line-height: 1.6;
         }
 
         /* Grid Galerie Showcase */
@@ -318,7 +347,7 @@
             MLGUI
         </a>
         <ul class="nav-links">
-            <li><a href="#presentation">Présentation</a></li>
+            <li><a href="#video-section">Presentation</a></li>
             <li><a href="#why-us">Why Us?</a></li>
             <li><a href="#quote" class="nav-cta">Want a Quote?</a></li>
         </ul>
@@ -331,77 +360,79 @@
         <p>The all-in-one studio built to replace tool fragmentation. From data masking to training execution in one sleek interface.</p>
     </header>
 
-    <!-- Readers/Hover-Play Video -->
-    <div class="video-wrapper">
-        <main class="video-container">
+    <!-- Auto-Play on Scroll Video Container -->
+    <div class="video-wrapper" id="video-section">
+        <div class="video-intro-note">
+            <span>💡</span>
+            <p>The creator explains the issue and how we solve it:</p>
+        </div>
+
+        <div class="video-container">
             <video 
                 id="demoVideo" 
                 controls 
                 muted 
+                playsinline 
+                loop
                 poster="miniature.png" 
-                preload="metadata"
-                onmouseenter="this.play()" 
-                onmouseleave="this.pause()">
+                preload="metadata">
                 <source src="Demo_MLGUI.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-        </main>
+        </div>
     </div>
 
-    <!-- Section Présentation & Gallery -->
-    <section id="presentation">
-        <h2 class="section-title">Présentation</h2>
-        <p class="section-desc">Visualisez directement vos données 2D/3D et orchestrez vos entraînements sans passer par plusieurs logiciels indépendants.</p>
+    <!-- Section Why Us & Interface Gallery fusionnées -->
+    <section id="why-us">
+        <h2 class="section-title">Why Us?</h2>
+        <p class="section-desc">
+            Tired of juggling between 15 different tools? MLGUI brings together the entire machine learning workflow in a unique and ultra-responsive environment.<br>
+            Visualize your 2D/3D data directly and orchestrate your trainings without going through multiple independent software.
+        </p>
         
         <div class="showcase-grid">
             <div class="showcase-card">
-                <img src="2DPage.jpg" alt="Segmentation 2D">
+                <img src="2DPage.png" alt="Segmentation 2D">
                 <div class="showcase-content">
                     <h3>Segmentation 2D</h3>
-                    <p>Annotation sémantique fluide d'images satellite et cartes haute résolution.</p>
+                    <p>Easy Labelling on 2D images with fluid semantic annotation.</p>
                 </div>
             </div>
             <div class="showcase-card">
                 <img src="3DPage.png" alt="Segmentation 3D">
                 <div class="showcase-content">
                     <h3>Segmentation 3D</h3>
-                    <p>Manipulation et masquage direct de nuages de points complexes en 3D.</p>
+                    <p>Direct manipulation and masking of complex 3D point clouds.</p>
                 </div>
             </div>
             <div class="showcase-card">
                 <img src="training.png" alt="Training Engine">
                 <div class="showcase-content">
                     <h3>Training Engine</h3>
-                    <p>Configuration intuitive de vos modèles, fonctions de perte et métriques de suivi.</p>
+                    <p>Intuitive configuration of your models, loss functions and tracking metrics.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Section Why Us -->
-    <section id="why-us">
-        <h2 class="section-title">Why Us?</h2>
-        <p class="section-desc">Marre de jongler entre 15 outils différents ? MLGUI rassemble l'ensemble de votre workflow machine learning dans un environnement unique et ultra-réactif.</p>
     </section>
 
     <!-- Section Want a Quote / Contact -->
     <section id="quote">
         <div class="quote-box">
             <h2 class="section-title">Want a Quote or Early Access?</h2>
-            <p class="section-desc">Vous êtes intéressé par le projet, vous souhaitez échanger sur une opportunité ou obtenir un devis personnalisé ? Contactez-moi directement.</p>
+            <p class="section-desc">You are interested in the project? You want to get a personalized quote or early access? Contact me directly.</p>
 
             <div class="contact-links">
                 <a href="mailto:doyez.sebastien34090@gmail.com" class="btn btn-primary">
-                    ✉️ Contact Me by Email
+                    ✉️ doyez.sebastien34090@gmail.com
                 </a>
                 <a href="https://github.com/sebastien-doyez2812" target="_blank" class="btn btn-secondary">
-                    GitHub
+                    Creator's GitHub
                 </a>
                 <a href="https://huggingface.co/SDoyez" target="_blank" class="btn btn-secondary">
-                    HuggingFace
+                    Creator's HuggingFace
                 </a>
                 <a href="https://sebastien-doyez2812.github.io/my_website.github.io/" target="_blank" class="btn btn-secondary">
-                    Portfolio
+                    Creator's Portfolio
                 </a>
             </div>
         </div>
@@ -409,8 +440,28 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 MLGUI — Sébastien Doyez. Open source & Startup experiment.</p>
+        <p>© 2026 MLGUI — Sébastien Doyez.</p>
     </footer>
 
+    <!-- Script de lancement automatique au scroll (Intersection Observer) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('demoVideo');
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(err => console.log('Autoplay empêché par le navigateur:', err));
+            } else {
+              video.pause();
+            }
+          });
+        }, {
+          threshold: 0.4
+        });
+
+        observer.observe(video);
+      });
+    </script>
 </body>
 </html>
