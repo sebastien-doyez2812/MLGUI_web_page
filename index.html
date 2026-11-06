@@ -198,12 +198,18 @@
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(12px);
+            position: relative;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
         }
 
-        video {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            border: 0;
             border-radius: 16px;
         }
 
@@ -360,7 +366,7 @@
         <p>The all-in-one studio built to replace tool fragmentation. From data masking to training execution in one sleek interface.</p>
     </header>
 
-    <!-- Auto-Play on Scroll Video Container -->
+    <!-- Vidéo YouTube Intégrée -->
     <div class="video-wrapper" id="video-section">
         <div class="video-intro-note">
             <span>💡</span>
@@ -368,18 +374,12 @@
         </div>
 
         <div class="video-container">
-            <video 
-                id="demoVideo" 
-                controls 
-                muted 
-                playsinline 
-                autoplay
-                loop
-                poster="miniature.png" 
-                preload="metadata">
-                <source src="Demo_MLGUI.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <iframe 
+                src="https://www.youtube.com/embed/jOs4xX8VVsY?autoplay=1&mute=1&loop=1&playlist=jOs4xX8VVsY" 
+                title="MLGUI Demo" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 
@@ -426,6 +426,9 @@
                 <a href="mailto:doyez.sebastien34090@gmail.com" class="btn btn-primary">
                     ✉️ doyez.sebastien34090@gmail.com
                 </a>
+                <a href="https://www.youtube.com/watch?v=jOs4xX8VVsY" target="_blank" class="btn btn-secondary">
+                    ▶ Watch on YouTube
+                </a>
                 <a href="https://github.com/sebastien-doyez2812" target="_blank" class="btn btn-secondary">
                     Creator's GitHub
                 </a>
@@ -443,34 +446,5 @@
     <footer>
         <p>© 2026 MLGUI — Sébastien Doyez.</p>
     </footer>
-
-    <!-- Script de lancement automatique au scroll (Intersection Observer) -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const video = document.getElementById('demoVideo');
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              if (video.paused) {
-                video.play().catch(err => {
-                  if (err.name !== 'AbortError') {
-                    console.log('Lecture automatique bloquée :', err);
-                  }
-                });
-              }
-            } else {
-              if (!video.paused) {
-                video.pause();
-              }
-            }
-          });
-        }, {
-          threshold: 0.3
-        });
-
-        observer.observe(video);
-      });
-    </script>
 </body>
 </html>
