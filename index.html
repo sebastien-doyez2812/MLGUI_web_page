@@ -452,10 +452,8 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              // On s'assure que la vidéo n'est pas déjà en train de jouer avant de relancer
               if (video.paused) {
                 video.play().catch(err => {
-                  // Ignore l'erreur si l'utilisateur a scrollé trop vite (interruption normale)
                   if (err.name !== 'AbortError') {
                     console.log('Lecture automatique bloquée :', err);
                   }
@@ -468,7 +466,7 @@
             }
           });
         }, {
-          threshold: 0.3 // Se déclenche dès que 30% de la vidéo est visible
+          threshold: 0.3
         });
 
         observer.observe(video);
