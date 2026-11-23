@@ -42,7 +42,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1.25rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -69,8 +71,9 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
+            flex-wrap: wrap;
             list-style: none;
         }
 
@@ -199,8 +202,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(12px);
             position: relative;
-            padding-bottom: 56.25%; /* Ratio 16:9 */
-            height: 0;
+            aspect-ratio: 16 / 9;
         }
 
         .video-container iframe {
@@ -333,6 +335,18 @@
             transform: translateY(-2px);
         }
 
+        @media (max-width: 640px) {
+            header h1 {
+                font-size: 2.4rem;
+            }
+            nav {
+                padding: 1rem 1.25rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
         footer {
             margin-top: auto;
             padding: 3rem 1.5rem;
@@ -370,14 +384,15 @@
     <div class="video-wrapper" id="video-section">
         <div class="video-intro-note">
             <span>💡</span>
-            <p>The creator explains the issue and how we solve it:</p>
+            <p>The speech explains the issue and how we solve it:</p>
         </div>
 
         <div class="video-container">
             <iframe 
-                src="https://www.youtube.com/embed/jOs4xX8VVsY?autoplay=1&mute=1&loop=1&playlist=jOs4xX8VVsY" 
+                src="https://www.youtube.com/embed/AUoXS1Q2Zgw" 
                 title="MLGUI Demo" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen>
             </iframe>
         </div>
@@ -426,16 +441,16 @@
                 <a href="mailto:doyez.sebastien34090@gmail.com" class="btn btn-primary">
                     ✉️ doyez.sebastien34090@gmail.com
                 </a>
-                <a href="https://www.youtube.com/watch?v=jOs4xX8VVsY" target="_blank" class="btn btn-secondary">
+                <a href="https://www.youtube.com/watch?v=AUoXS1Q2Zgw" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                     ▶ Watch on YouTube
                 </a>
-                <a href="https://github.com/sebastien-doyez2812" target="_blank" class="btn btn-secondary">
+                <a href="https://github.com/sebastien-doyez2812" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                     Creator's GitHub
                 </a>
-                <a href="https://huggingface.co/SDoyez" target="_blank" class="btn btn-secondary">
+                <a href="https://huggingface.co/SDoyez" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                     Creator's HuggingFace
                 </a>
-                <a href="https://sebastien-doyez2812.github.io/my_website.github.io/" target="_blank" class="btn btn-secondary">
+                <a href="https://sebastien-doyez2812.github.io/my_website.github.io/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
                     Creator's Portfolio
                 </a>
             </div>
